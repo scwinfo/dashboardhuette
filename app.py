@@ -38,7 +38,7 @@ import webbrowser
 html_template = open("anfrage_huette.html").read();
 
 configuration = sib_api_v3_sdk.Configuration()
-
+configuration.api_key['api-key'] = st.secrets["mail_key"]
 
 api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
 
