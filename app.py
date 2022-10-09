@@ -37,7 +37,11 @@ import webbrowser
 html_template = open("anfrage_huette.html").read();
 
 configuration = sib_api_v3_sdk.Configuration()
-configuration.api_key['api-key'] = st.secrets["mail_key"]
+
+# Pure Streamlit deploy
+#configuration.api_key['api-key'] = st.secrets["mail_key"]
+import os
+configuration.api_key['api-key'] = os.getenv("mail_key")
 
 api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
 
@@ -65,8 +69,10 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 # credentials = Credentials.from_service_account_file('.streamlit/huettenbelegung.json', scopes=scope)
 
 import json
-key_dict = json.loads(st.secrets["text_key"])
 
+#key_dict = json.loads(st.secrets["text_key"])
+
+key_dict = json.loads(os.getenv("text_key"))
 #credentials = Credentials.from_service_account_info(key_dict)
 credentials = Credentials.from_service_account_info(key_dict, scopes=scope)
 
