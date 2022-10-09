@@ -19,7 +19,8 @@ import plotly.figure_factory as ff
 # Zeit- und Datumsberechnung
 import datetime
 import calendar
-
+import locale
+locale.setlocale(locale.LC_ALL, 'de_DE')
 
 # Alles zum Verbinden von privatem Google-Sheet
 import gspread
@@ -62,9 +63,14 @@ ppN_k_mg = 3;
 # Define the scope
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
-# Add credentials to the account
-#credentials = Credentials.from_service_account_file('.streamlit/huettenbelegung.json', scopes=scope)
-credentials = Credentials.from_service_account_info(st.secrets["gcp_service_account"])
+# Add credentials to the account --> Local run
+# credentials = Credentials.from_service_account_file('.streamlit/huettenbelegung.json', scopes=scope)
+
+import json
+key_dict = json.loads(st.secrets["text_key"])
+
+#credentials = Credentials.from_service_account_info(key_dict)
+credentials = Credentials.from_service_account_info(key_dict, scopes=scope)
 
 # Read the data
 client = Client(scope=scope, creds=credentials)
@@ -171,7 +177,7 @@ with st.container():
 
             if sum_p == 0:
             
-                st.success('Zimmer noch frei, jetzt buchen!')
+                st.success('Zimmer noch frei, jetzt anfragen!')
                 st.write('Belegungsplan für den gewählten Reisezeitraum')
                 fig1 =  ff.create_table(result)
                 st.plotly_chart(fig1)
