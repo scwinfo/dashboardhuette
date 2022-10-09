@@ -19,8 +19,6 @@ import plotly.figure_factory as ff
 # Zeit- und Datumsberechnung
 import datetime
 import calendar
-import locale
-locale.setlocale(locale.LC_ALL, 'de_DE')
 
 # Alles zum Verbinden von privatem Google-Sheet
 import gspread
