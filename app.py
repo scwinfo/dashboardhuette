@@ -63,7 +63,8 @@ ppN_k_mg = 3;
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 
 # Add credentials to the account
-credentials = Credentials.from_service_account_file('.streamlit/huettenbelegung.json', scopes=scope)
+#credentials = Credentials.from_service_account_file('.streamlit/huettenbelegung.json', scopes=scope)
+credentials = Credentials.from_service_account_info(st.secrets["gcp_service_account"])
 
 # Read the data
 client = Client(scope=scope, creds=credentials)
