@@ -39,7 +39,7 @@ import webbrowser
 html_template = open("anfrage_huette.html").read();
 
 configuration = sib_api_v3_sdk.Configuration()
-configuration.api_key['api-key'] = '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'
+configuration.api_key['api-key'] = mail_key
 
 api_instance = sib_api_v3_sdk.TransactionalEmailsApi(sib_api_v3_sdk.ApiClient(configuration))
 
