@@ -5,4 +5,4 @@ pandas==1.1.3
 plotly==5.10.0
 protobuf==4.21.7
 sib_api_v3_sdk==7.5.0
-streamlit==1.12.2
+streamlit
