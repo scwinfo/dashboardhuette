@@ -33,8 +33,9 @@ from string import Template
 import time
 import webbrowser
 
+import codecs
 # HTML Tempalte für Mailversand
-html_template = open("anfrage_huette.html").read();
+html_template = codecs.open("anfrage_huette.html","r",encoding='utf-8').read();
 
 configuration = sib_api_v3_sdk.Configuration()
 
