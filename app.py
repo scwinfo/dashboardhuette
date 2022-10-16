@@ -273,7 +273,7 @@ if st.session_state.DISPFORM == 1:
                                                     p_e_nm=p_e_nm,
                                                     p_ges=p_ges
                                                    )
-        html_mail_send = html_mail.encode("latin-1")
+        html_mail_send = html_mail
         
         if submitted_:
             
